@@ -1,0 +1,8 @@
+
+particle.content:
+  path: '/particles'
+  defaults:
+    _controller: '\Drupal\particle\Controller\ParticleBlockController::content'
+    _title_callback: '\Drupal\particle\Controller\ParticleBlockController::randomTitle'
+  requirements:
+    _permission: 'access content'

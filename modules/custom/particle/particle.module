@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains bunny.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function particle_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the bunny module.
+    case 'help.page.particle':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Bunny') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function particle_theme($existing, $type, $theme, $path) {
+  return [
+    'particle' => [
+      'render element' => 'children',
+      'variables' => [],
+    ],
+  ];
+}

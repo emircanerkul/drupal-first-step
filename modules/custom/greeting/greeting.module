@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains greeting.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function greeting_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the greeting module.
+    case 'help.page.greeting':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Greeting Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}

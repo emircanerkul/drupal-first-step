@@ -1,0 +1,7 @@
+json_api:
+  path: 'json-api'
+  defaults:
+    _title: 'Json Api'
+    _controller: '\Drupal\json_api\Controller\JsonApiController::renderApi'
+  requirements:
+    _permission: 'access content'

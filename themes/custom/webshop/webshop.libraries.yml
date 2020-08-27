@@ -1,0 +1,11 @@
+webshop-style:
+  css:
+    theme:
+      css/materialize.min.css: {}
+      css/style.css: {}
+      https://fonts.googleapis.com/icon?family=Material+Icons: {type: external}
+  js:
+    js/materialize.min.js: {}
+    js/init.js: {}
+  dependencies:
+    - core/jquery

@@ -1,0 +1,6 @@
+particle.menu:
+  title: 'Particle'
+  description: 'Description'
+  parent: main
+  menu_name: main
+  route_name: particle.content

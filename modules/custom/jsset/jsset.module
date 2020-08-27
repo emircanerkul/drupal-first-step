@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains jsset.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function jsset_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the jsset module.
+    case 'help.page.jsset':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Accessing variables with js') . '</p>';
+      return $output;
+
+    default:
+  }
+}

@@ -1,0 +1,9 @@
+prg_with_bg:
+  version: 1.0
+  css:
+    component:
+      components/prg_with_bg/prg_with_bg.css: {}
+  js:
+    components/prg_with_bg/prg_with_bg.js: {}
+  dependencies:
+    - core/jquery

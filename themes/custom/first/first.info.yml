@@ -1,0 +1,13 @@
+name: First
+type: theme
+base theme:
+description: "Emircan's education purposed first theme"
+core: 8.x
+screenshot: preview.png
+logo: logo.png
+libraries:
+  - first/base
+regions:
+  sticky_menu: "Sticky Top Bar Menu"
+  header_menu: "Header Menu"
+  footer_menu: "Footer Menu"

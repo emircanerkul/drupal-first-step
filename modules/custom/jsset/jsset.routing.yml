@@ -1,0 +1,8 @@
+
+jsset.content:
+  path: '/jsset'
+  defaults:
+    _controller: '\Drupal\jsset\Controller\JssetController::jsPage'
+    _title: 'jsset'
+  requirements:
+    _permission: 'access content'

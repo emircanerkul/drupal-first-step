@@ -1,0 +1,15 @@
+first.content:
+  path: '/first'
+  defaults:
+    _controller: '\Drupal\first\Controller\FirstController::content'
+    _title: 'First Custom Module'
+  requirements:
+    _permission: 'access content'
+
+first.tabs.first:
+  path: '/first/tab'
+  defaults:
+    _controller: '\Drupal\first\Controller\FirstController::tab'
+    _title: 'First Custom Module Second Tab'
+  requirements:
+    _permission: 'access content'

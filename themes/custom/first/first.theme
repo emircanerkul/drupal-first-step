@@ -1,0 +1,123 @@
+<?php
+
+/**
+ * @file
+ */
+
+use Drupal\Core\Serialization\Yaml;
+use Drupal\Component\Serialization\Exception\InvalidDataTypeException;
+use Drupal\Core\Asset\Exception\InvalidLibraryFileException;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ *
+ */
+function first_preprocess_page(&$variables) {
+  $variables['theme_first_footer_copyright'] = str_replace("%year%", date("Y"), theme_get_setting('theme_first_footer_copyright'));
+  $variables['theme_first_footer_about'] = theme_get_setting('theme_first_footer_about');
+  $variables['theme_first_social_fb'] = theme_get_setting('theme_first_social_fb');
+  $variables['theme_first_social_tw'] = theme_get_setting('theme_first_social_tw');
+  $variables['theme_first_social_in'] = theme_get_setting('theme_first_social_in');
+  $variables['theme_first_social_yt'] = theme_get_setting('theme_first_social_yt');
+  $variables['theme_first_mail'] = theme_get_setting('theme_first_mail');
+  $variables['theme_first_phone'] = theme_get_setting('theme_first_phone');
+  $variables['theme_first_working_time'] = theme_get_setting('theme_first_working_time');
+}
+
+/**
+ *
+ */
+function first_form_system_theme_settings_alter(&$form, FormStateInterface $form_state, $form_id = NULL) {
+  // Work-around for a core bug affecting admin themes. See issue #943212.
+  if (isset($form_id)) {
+    return;
+  }
+
+  $form['theme_first_footer_about'] = [
+    '#type'          => 'textarea',
+    '#title'         => t('About Site'),
+    '#default_value' => theme_get_setting('theme_first_footer_about'),
+    '#description'   => t("Site about text that will be visible on theme footer section"),
+  ];
+  $form['theme_first_mail'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('Mail'),
+    '#default_value' => theme_get_setting('theme_first_mail'),
+    '#description'   => t("Place site mail that will be visible on theme top section"),
+  ];
+  $form['theme_first_phone'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('Phone'),
+    '#default_value' => theme_get_setting('theme_first_phone'),
+    '#description'   => t("Place phone that will be visible on theme top section"),
+  ];
+
+  $form['theme_first_working_time'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('Working Times'),
+    '#default_value' => theme_get_setting('theme_first_working_time'),
+    '#description'   => t("Place working times that will be visible on theme top section"),
+  ];
+
+  $form['theme_first_footer_copyright'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('Copyright Text'),
+    '#default_value' => theme_get_setting('theme_first_footer_copyright'),
+    '#description'   => t("Site copyright text that will be visible on theme footer section. You can use %year% smart tag for current year"),
+  ];
+
+  $form['theme_first_social_fb'] = [
+    '#type'          => 'url',
+    '#title'         => t('Facebook'),
+    '#default_value' => theme_get_setting('theme_first_social_fb'),
+    '#description'   => t("Place Facebook url that will be visible on theme footer section"),
+  ];
+
+  $form['theme_first_social_tw'] = [
+    '#type'          => 'url',
+    '#title'         => t('Twitter'),
+    '#default_value' => theme_get_setting('theme_first_social_tw'),
+    '#description'   => t("Place Twitter url that will be visible on theme footer section"),
+  ];
+
+  $form['theme_first_social_in'] = [
+    '#type'          => 'url',
+    '#title'         => t('Linkedin'),
+    '#default_value' => theme_get_setting('theme_first_social_in'),
+    '#description'   => t("Place Linkedin url that will be visible on theme footer section"),
+  ];
+
+  $form['theme_first_social_yt'] = [
+    '#type'          => 'url',
+    '#title'         => t('Youtube'),
+    '#default_value' => theme_get_setting('theme_first_social_yt'),
+    '#description'   => t("Place Youtube url that will be visible on theme footer section"),
+  ];
+}
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function first_library_info_alter(&$libraries, $extension) {
+  $themename = 'first';
+  // Alter the library of this theme only.
+  if ($extension == $themename) {
+    $directory_iterator = new RecursiveDirectoryIterator(drupal_get_path('theme', $themename) . '/components/');
+    foreach (new RecursiveIteratorIterator($directory_iterator) as $file) {
+      if ($file->getFilename() == 'libraries.yml') {
+        try {
+          $new_libraries = Yaml::decode(file_get_contents($file->getRealPath()));
+          if (!empty($new_libraries)) {
+            foreach ($new_libraries as $key => $new_library) {
+              $libraries[$key] = $new_library;
+            }
+          }
+        }
+        catch (InvalidDataTypeException $e) {
+          // Rethrow a more helpful exception to provide context.
+          throw new InvalidLibraryFileException(sprintf('Invalid library definition in %s: %s', $file->getRealPath(), $e->getMessage()), 0, $e);
+        }
+      }
+    }
+  }
+}

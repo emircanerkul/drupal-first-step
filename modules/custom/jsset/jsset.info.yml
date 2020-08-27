@@ -1,0 +1,5 @@
+name: 'Jsset'
+type: module
+description: 'Accessing variables with js'
+core: 8.x
+package: 'Custom'

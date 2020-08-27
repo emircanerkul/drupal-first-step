@@ -1,0 +1,5 @@
+name: 'particle'
+type: module
+description: 'Particle'
+core: 8.x
+package: 'Custom'

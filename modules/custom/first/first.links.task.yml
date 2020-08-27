@@ -1,0 +1,10 @@
+first.tabs:
+  route_name: first.content
+  base_route: first.content
+  title: "First Custom Module"
+
+first.tab_first:
+  route_name: first.tabs.first
+  base_route: first.content
+  title: "Second Tab"
+  weight: 2

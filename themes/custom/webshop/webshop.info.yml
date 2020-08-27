@@ -1,0 +1,13 @@
+name: Web Shop
+description: Learn with DrupalUP https://www.youtube.com/watch?v=AyYOE6x2vGQ&list=PL2FjJlpyDp0Pfy-nf7OXGesiNNDMhgXPv
+type: theme
+core: 8.x
+libraries:
+  - webshop/webshop-style
+
+regions:
+  primary_menu: "Primary Menu"
+  breadcrumb: "Breadcrumb"
+  content: "Content"
+  highlighted: "Highlighted"
+  footer: "Footer"

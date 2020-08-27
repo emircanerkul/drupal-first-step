@@ -1,0 +1,5 @@
+name: 'First Custom Module'
+type: module
+description: 'First Custom Module'
+core: 8.x
+package: 'Custom'

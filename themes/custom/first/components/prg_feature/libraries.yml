@@ -1,0 +1,9 @@
+prg_feature:
+  version: 1.0
+  css:
+    component:
+      components/prg_feature/prg_feature.css: {}
+  js:
+    components/prg_feature/prg_feature.js: {}
+  dependencies:
+    - core/jquery

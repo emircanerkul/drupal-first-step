@@ -1,0 +1,6 @@
+first.newpage:
+  title: "First Module"
+  description: "Link to the First Custom Module"
+  route_name: first.content
+  weight: 10
+  menu_name: main
