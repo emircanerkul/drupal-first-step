@@ -43,7 +43,7 @@
 
 - Switched local development environment to [Docksal](https://github.com/docksal/docksal)
 - Installed and used Hierarchical Taxonomy Import module
-- Province, district, neighborhood [data converter](https://github.com/emircanerkul/il-ilce-mahalle) developed for HTI
+- Province, district, neighborhood [data converter](https://github.com/emircanerkul/drupal-first-step/tree/master/province-district-neighborhood) developed for HTI
 
 #### 09.08.2020
 
